@@ -230,6 +230,7 @@ body {
   transition: 2s ease-in-out;
   z-index: 100;
 }
+
 .detail_container {
   margin-top: 30px;
   transform: translateX(4%);
@@ -241,6 +242,19 @@ body {
   backdrop-filter: blur(10px);
   box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
   width: calc(100% - 6rem);
+}
+
+.pou {
+  position: absolute;
+  top:9%;
+  width: 100%;
+}
+
+.detail_box {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+
 }
 
 .detail1_container {
@@ -256,6 +270,8 @@ body {
   width: calc(100% - 6rem);
  
 }
+
+
 
 .booking_container.full-width {
   width: 98%;

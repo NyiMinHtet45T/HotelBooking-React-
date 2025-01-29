@@ -49,6 +49,7 @@ public class JwtProvider {
     }
 
     public String getUsernameFromToken(String token) {
+        System.out.println(token);
         return Jwts.parser()
                 .setSigningKey(getKey())
                 .build()

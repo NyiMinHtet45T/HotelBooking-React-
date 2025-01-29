@@ -237,87 +237,92 @@ export default function RoomDetaiComponent() {
                 </div>)}
             </div>
             <div>
-                <div className="booking_container" style={{ position: 'absolute', marginTop: 0 }} id="booking_container">
-                    <form action="">
-                        <div className="form_group">
-                            <div className="input_group">
-                                <input type="date" value={checkInDate} onChange={(e) => setCheckInDate(e.target.value)} />
-                                <label><RiCalendar2Line size={15} /> Check In</label>
-                            </div>
-                            {error.checkInDate == '' ? <small>Add date</small> : <small style={{ color: 'red' }}>{error.checkInDate}</small>}
-                        </div>
-                        <div className="form_group">
-                            <div className="input_group">
-                                <input type="date" value={checkOutDate} onChange={(e) => setCheckOutDate(e.target.value)} />
-                                <label ><RiCalendar2Line size={15} /> Check Out</label>
-                            </div>
-                            {error.checkOutDate == '' ? <small>Add date</small> : <small style={{ color: 'red' }}>{error.checkOutDate}</small>}
-                        </div>
-                        <div className="form_group">
-                            <div className="input_group">
-                                <label className='bookingInput'><RiUser3Line size={15} /> Adult</label>
-                                <div className='bookingSelection'>
-                                    <span className='total'>{numberOfAdults}</span>
-                                    <span className='plus' onClick={adultIncrement}><RiAddLine size={10} /></span>
-                                    <span className='minus' onClick={adultDecrement}><RiSubtractLine size={10} /></span>
+                <div>
+                    <div className="booking_container" id="booking_container">
+                        <form action="">
+                            <div className="form_group">
+                                <div className="input_group">
+                                    <input type="date" value={checkInDate} onChange={(e) => setCheckInDate(e.target.value)} />
+                                    <label><RiCalendar2Line size={15} /> Check In</label>
                                 </div>
+                                {error.checkInDate == '' ? <small>Add date</small> : <small style={{ color: 'red' }}>{error.checkInDate}</small>}
+                            </div>
+                            <div className="form_group">
+                                <div className="input_group">
+                                    <input type="date" value={checkOutDate} onChange={(e) => setCheckOutDate(e.target.value)} />
+                                    <label ><RiCalendar2Line size={15} /> Check Out</label>
+                                </div>
+                                {error.checkOutDate == '' ? <small>Add date</small> : <small style={{ color: 'red' }}>{error.checkOutDate}</small>}
+                            </div>
+                            <div className="form_group">
+                                <div className="input_group">
+                                    <label className='bookingInput'><RiUser3Line size={15} /> Adult</label>
+                                    <div className='bookingSelection'>
+                                        <span className='total'>{numberOfAdults}</span>
+                                        <span className='plus' onClick={adultIncrement}><RiAddLine size={10} /></span>
+                                        <span className='minus' onClick={adultDecrement}><RiSubtractLine size={10} /></span>
+                                    </div>
 
-                            </div>
-                            <p>Number of Adults</p>
-                        </div>
-                        <div className="form_group">
-                            <div className="input_group">
-                                <label className='bookingInput'><RiUser5Line size={15} /> Children</label>
-                                <div className='bookingSelection'>
-                                    <span className='total'>{numberOfChildren}</span>
-                                    <span className='plus' onClick={childIncrement}><RiAddLine size={10} /></span>
-                                    <span className='minus' onClick={childDecrement}><RiSubtractLine size={10} /></span>
                                 </div>
+                                <p>Number of Adults</p>
                             </div>
-                            <p>Number of Children</p>
-                        </div>
-                    </form>
+                            <div className="form_group">
+                                <div className="input_group">
+                                    <label className='bookingInput'><RiUser5Line size={15} /> Children</label>
+                                    <div className='bookingSelection'>
+                                        <span className='total'>{numberOfChildren}</span>
+                                        <span className='plus' onClick={childIncrement}><RiAddLine size={10} /></span>
+                                        <span className='minus' onClick={childDecrement}><RiSubtractLine size={10} /></span>
+                                    </div>
+                                </div>
+                                <p>Number of Children</p>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <div style={{ marginTop: 900 }}>
-                {
-                    alreadyBooking.length > 0 && (<div >
+                <div className='pou'>
+                    <div style={{ marginTop: 900 }}>
                         {
-                            alreadyBooking.map((alBookings, index) => (
-                                <div key={index} className='add-roomFlex detail1_container' style={{ marginTop: 10 }}>
-                                    <div style={{ marginLeft: 50 }}>
-                                        <h5>Booking : <span className='ts-color'>{index + 1}</span></h5>
-                                    </div>
-                                    <div style={{ marginLeft: 500 }}>
-                                        <h5>CheckInDate : <span className='ts-color'>{alBookings.checkInDate}</span></h5>
-                                    </div>
-                                    <div style={{ marginLeft: 100 }}>
-                                        <h5>CheckOutDate : <span className='ts-color'>{alBookings.checkOutDate}</span></h5>
-                                    </div>
+                            alreadyBooking.length > 0 && (<div >
+                                {
+                                    alreadyBooking.map((alBookings, index) => (
+                                        <div key={index} className=' detail1_container'>
+                                            <div className='detail_box'>
+                                                <div>
+                                                    <h5>Booking : <span className='ts-color'>{index + 1}</span></h5>
+                                                </div>
+                                                <div >
+                                                    <h5>CheckInDate : <span className='ts-color'>{alBookings.checkInDate}</span></h5>
+                                                </div>
+                                                <div >
+                                                    <h5>CheckOutDate : <span className='ts-color'>{alBookings.checkOutDate}</span></h5>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                </div>
-
-                            ))
+                                    ))
+                                }
+                            </div>)
                         }
-                    </div>)
-                }
-            </div>
-            <div className='detail_container' style={{ marginBottom: 20 }}>
-                {
-                    bookingConfirmationCode ? <div style={{ marginLeft: 100 }}>You Are Booking ConfirmationCode:<span style={{ color: 'blue' }}>{bookingConfirmationCode}</span><button onClick={() => nevigate("/bookingConfirmation")} className='btnBooking' to={"/bookingConfirmation"}>Find Booking</button></div> :
-                        <div>
-                            <span style={{ padding: 100 }}><RiDoorOpenLine size={15} /> {roomType}</span>
-                            <span className='stick'></span>
-                            <span style={{ padding: 100 }}><RiUserLine size={15} /> {population}</span>
-                            <span className='stick'></span>
-                            <span style={{ padding: 100 }}><RiNumbersLine size={15} /> {roomNumber}</span>
-                            <span className='stick'></span>
-                            <span style={{ padding: 100 }}>MMK {roomPrice}</span>
-                            <span className='stick'></span>
-                            <button className='btnBooking' onClick={(e) => isLogInHandler(e)}><RiBookMarkedLine size={15} /> Booking</button>
-                        </div>
-                }
+                    </div>
+                    <div className='detail_container' style={{ marginBottom: 20 }}>
+                        {
+                            bookingConfirmationCode ? <div style={{ marginLeft: 100 }}>You Are Booking ConfirmationCode:<span style={{ color: 'blue' }}>{bookingConfirmationCode}</span><button onClick={() => nevigate("/bookingConfirmation")} className='btnBooking' to={"/bookingConfirmation"}>Find Booking</button></div> :
+                                <div className='detail_box'>
+                                    <div><RiDoorOpenLine size={15} /> {roomType}</div>
+                                    <span className='stick'></span>
+                                    <div><RiUserLine size={15} /> {population}</div>
+                                    <span className='stick'></span>
+                                    <p><RiNumbersLine size={15} /> {roomNumber}</p>
+                                    <span className='stick'></span>
+                                    <p>MMK {roomPrice}</p>
+                                    <span className='stick'></span>
+                                    <button className='btnBooking' onClick={(e) => isLogInHandler(e)}><RiBookMarkedLine size={15} /> Booking</button>
+                                </div>
+                        }
 
+                    </div>
+                </div>
             </div>
 
 
